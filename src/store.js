@@ -25,7 +25,11 @@ const reducer = (state, action) => {
         ...state,
         orders: action.value,
       };
-
+    case actionType.APPEND_ORDER:
+      return {
+        ...state,
+        orders: [...state.orders, { ...action.value, id: state.orders.length + 1 }],
+      };
     default:
       return state;
   }

@@ -67,6 +67,7 @@ function Order() {
     try {
       const resp = await axios.post(`${process.env.REACT_APP_BASE_URL}/orders`, data, { headers: { Authorization: "Bearer " + localStorage.getItem("u_tkn") } });
       toast("A new order created", { position: "bottom-center", type: "success", theme: "colored", autoClose: 2000 });
+      dispatch({ type: actionType.APPEND_ORDER, value: data });
     } catch (error) {
       setErrorMsg(Array.isArray(error.response.data.message) ? error.response.data.message : [error.response.data.message]);
     }
@@ -81,8 +82,11 @@ function Order() {
 
   const handleOnClose = (e) => {
     setIsOpen(false);
-    reset(state.orders.find((order) => order.id === Number(selected)));
-    toast("Grid loaded!", { position: "bottom-center", type: "success", theme: "light", autoClose: 1000 });
+    if (selected) {
+      reset(state.orders.find((order) => order.id === Number(selected)));
+      toast("Grid loaded!", { position: "bottom-center", type: "success", theme: "light", autoClose: 1000 });
+      setSelected(null);
+    }
   };
 
   const columns = [
