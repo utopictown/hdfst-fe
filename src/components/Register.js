@@ -76,6 +76,11 @@ function Register() {
           <ButtonContent text={"Register"} />
         </Button>
       </section>
+      <section className="flex flex-col space-y-2 w-80">
+        <Button type="submit" className={"bg-indigo-500 bg-opacity-20 text-indigo-500"} onClick={() => navigate("/login")}>
+          <ButtonContent text={"Login"} />
+        </Button>
+      </section>
     </form>
   );
 }

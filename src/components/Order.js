@@ -14,7 +14,7 @@ import actionType from "../store/action-type";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Claims() {
+function Order() {
   let [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
@@ -258,4 +258,4 @@ function Claims() {
   );
 }
 
-export default Claims;
+export default Order;
